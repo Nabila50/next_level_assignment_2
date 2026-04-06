@@ -1,5 +1,5 @@
-Project Name: Vehicle Rental System
-Live URL: https://assignment-2-2x85q8nxl-nabila-nawshins-projects.vercel.app/
+# Project Name: Vehicle Rental System
+# Live URL: https://assignment-2-2x85q8nxl-nabila-nawshins-projects.vercel.app/
 # Features & Techonology Stack
 1. Login setup
 2. Register setup
