@@ -11,10 +11,10 @@ const initDB = async () => {
     CREATE TABLE IF NOT EXISTS users(
     id SERIAL PRIMARY KEY,
     name VARCHAR(100) NOT NULL,
-    email VARCHAR(150) UNIQUE NOT NULL CHECK (email = LOWER(email)),
+    email VARCHAR(150) UNIQUE NOT NULL,
     password TEXT NOT NULL,
     phone VARCHAR(15) NOT NULL,
-    role VARCHAR(20) CHECK (role IN ('admin', 'customer'))
+    role VARCHAR(20) NOT NULL CHECK (role IN ('admin', 'customer'))
     )
     `);
 

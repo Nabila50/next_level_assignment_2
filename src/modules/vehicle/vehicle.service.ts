@@ -37,8 +37,8 @@ const updateVehicle = async(vehicle_name: string, type:string, registration_numb
         type,
         registration_number,
         daily_rent_price,
-        id,
-      ],
+        id
+      ]
     );
 
     return result; 

@@ -1,12 +1,23 @@
 import { Request, Response } from "express";
-import { pool } from "../../config/db";
 import { vehicleService } from "./vehicle.service";
 
 const createVehicle = async (req: Request, res: Response) => {
-  const { vehicle_name,type, registration_number, daily_rent_price,availability_status } = req.body;
+  const {
+    vehicle_name,
+    type,
+    registration_number,
+    daily_rent_price,
+    availability_status,
+  } = req.body;
 
   try {
-    const result = await vehicleService.createVehicle(vehicle_name,type, registration_number, daily_rent_price,availability_status);
+    const result = await vehicleService.createVehicle(
+      vehicle_name,
+      type,
+      registration_number,
+      daily_rent_price,
+      availability_status,
+    );
 
     res.status(201).json({
       success: true,
@@ -14,7 +25,7 @@ const createVehicle = async (req: Request, res: Response) => {
       data: result.rows[0],
     });
   } catch (err: any) {
-    res.status(500).json({
+    res.status(401).json({
       success: false,
       message: err.message,
     });
@@ -36,11 +47,13 @@ const getVehicle = async (req: Request, res: Response) => {
       message: err.message,
     });
   }
-}
+};
 
 const getSingleVehicle = async (req: Request, res: Response) => {
   try {
-    const result = await vehicleService.getSingleVehicle(req.params.id as string);
+    const result = await vehicleService.getSingleVehicle(
+      req.params.id as string,
+    );
 
     if (result.rows.length === 0) {
       res.status(404).json({
@@ -62,16 +75,21 @@ const getSingleVehicle = async (req: Request, res: Response) => {
   }
 };
 
-
-// ! this one has a problem......only update
 const updateVehicle = async (req: Request, res: Response) => {
-  const { vehicle_name, type, registration_number, daily_rent_price, id } = req.body;
+  const { vehicle_name, type, registration_number, daily_rent_price } =
+    req.body;
 
   try {
-    const result = await vehicleService.updateVehicle(vehicle_name, type, registration_number, daily_rent_price, id);
+    const result = await vehicleService.updateVehicle(
+      vehicle_name,
+      type,
+      registration_number,
+      daily_rent_price,
+      req.params.id as string,
+    );
 
     console.log(result);
-    
+
     if (result.rowCount === 0) {
       res.status(404).json({
         success: false,
@@ -114,13 +132,12 @@ const deleteVehicle = async (req: Request, res: Response) => {
       message: err.message,
     });
   }
-}
-
+};
 
 export const vehicleController = {
   createVehicle,
   getVehicle,
   getSingleVehicle,
   updateVehicle,
-  deleteVehicle
+  deleteVehicle,
 };

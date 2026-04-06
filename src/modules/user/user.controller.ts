@@ -3,12 +3,12 @@ import { pool } from "../../config/db";
 import { userServices } from "./user.service";
 
 const createUser = async (req: Request, res: Response) => {
-  const { name, email, password, phone, role } = req.body;
+ 
 
   try {
-    const result = await userServices.createUser(name, email, password, phone, role);
+    const result = await userServices.createUser(req.body);
     res.status(201).json({
-      success: false,
+      success: true,
       message: "Data inserted Successfully",
       data: result.rows[0],
     });
@@ -30,7 +30,7 @@ const getUser = async (req: Request, res: Response) => {
       data: result.rows,
     });
   } catch (err: any) {
-    res.status(5000).json({
+    res.status(500).json({
       success: false,
       message: err.message,
     });
