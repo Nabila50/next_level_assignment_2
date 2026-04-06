@@ -4,9 +4,11 @@
 1. Login setup
 2. Register setup
 3. Different users like admin, customer
-4. Role base project
-5. use Node Js
-6. use CURD operations with Express, Typescript
-7. For database setup PostgreSQL used.
-8. Fully Authentication and Authorization system with token
-9. Deploy to the vercel.
+4. Role-based project
+   
+# Setup & Usage Instructions
+1. use Node Js
+2. Use CRUD operations with Express, Typescript
+3. For database setup, PostgreSQL was used.
+4. A fully Authenticated and Authorization system with a token
+5. Deploy to Vercel.
